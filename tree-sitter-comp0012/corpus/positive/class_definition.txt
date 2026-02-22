@@ -1,0 +1,109 @@
+================
+Class definition
+================
+
+class A {
+  int x = 1;
+  string s = "hi";
+  boolean ok = true;
+}
+
+class Box(int n) {
+  int[] xs = [1,2,3];
+  string[] ss = ["a","b"];
+  boolean[] bs = [true,false];
+  int get(int i) { return(i); }
+}
+
+class Child extends Parent() {
+  int value = 42;
+  void reset() { value = 0; return; }
+}
+
+---
+
+(source_file
+  (class_declare
+    (identifier)
+    (declare
+      (typed_declare
+        (type)
+        (identifier)
+        (arithmetic_exp
+          (num))))
+    (declare
+      (typed_declare
+        (type)
+        (identifier)
+        (string)))
+    (declare
+      (typed_declare
+        (type)
+        (identifier)
+        (bool_exp
+          (bool)))))
+  (class_declare
+    (identifier)
+    (parameter_list
+      (parameter
+        (type)
+        (identifier)))
+    (declare
+      (array_declare
+        (int_array_declare
+          (identifier)
+          (arithmetic_exp
+            (num))
+          (arithmetic_exp
+            (num))
+          (arithmetic_exp
+            (num)))))
+    (declare
+      (array_declare
+        (string_array_declare
+          (identifier)
+          (string)
+          (string))))
+    (declare
+      (array_declare
+        (bool_array_declare
+          (identifier)
+          (bool_exp
+            (bool))
+          (bool_exp
+            (bool)))))
+    (function_declare
+      (function_declare_typed
+        (type)
+        (identifier)
+        (parameter_list
+          (parameter
+            (type)
+            (identifier)))
+        (block
+          (return_statement
+            (bool_exp
+                  (parenthesis_bool
+                    (bool_exp
+                  (identifier)))))))))
+  (class_declare
+    (identifier)
+    (identifier)
+    (parameter_list)
+    (declare
+      (typed_declare
+        (type)
+        (identifier)
+        (arithmetic_exp
+          (num))))
+    (function_declare
+      (function_declare_void
+        (type_void)
+        (identifier)
+        (parameter_list)
+        (block
+          (assignment
+            (identifier)
+            (arithmetic_exp
+              (num)))
+          (return_statement))))))

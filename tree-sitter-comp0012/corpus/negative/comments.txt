@@ -22,11 +22,9 @@ Block comments Open
 ---
 (source_file
    (ERROR
-      (UNEXPECTED 'W'))
-   (identifier)
-   (identifier)
-   (ERROR
-      (UNEXPECTED '*')))
+      (identifier)
+        (arithmetic_exp
+          (identifier))))
 
 ====================
 Block comments Close
@@ -38,4 +36,6 @@ Block comments Close
 ---
 (source_file
    (ERROR
-      (UNEXPECTED '\0')))
+      (identifier)
+        (arithmetic_exp
+          (identifier))))

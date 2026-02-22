@@ -1,0 +1,78 @@
+================================================================================
+Function header missing left parenthesis
+================================================================================
+
+int f int x) { return(x); }
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (ERROR
+    (type)
+    (identifier)
+    (identifier)
+    (identifier))
+  (block
+    (return_statement
+      (bool_exp
+        (parenthesis_bool
+          (bool_exp
+            (identifier)))))))
+
+================================================================================
+Function body without braces
+================================================================================
+
+int f(int x) return(x);
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (ERROR
+    (type)
+    (identifier)
+    (parameter_list
+      (parameter
+        (type)
+        (identifier)))
+    (ERROR
+      (identifier))
+    (parameter_list
+      (ERROR
+        (identifier)))))
+
+================================================================================
+Function missing name
+================================================================================
+
+void () { return; }
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (ERROR
+    (type_void))
+  (block
+    (return_statement)))
+
+================================================================================
+Parameter list malformed comma
+================================================================================
+
+int f(,) { return(1); }
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_declare
+    (function_declare_typed
+      (type)
+      (identifier)
+      (parameter_list
+        (ERROR))
+      (block
+        (return_statement
+          (arithmetic_exp
+            (parenthesis_arithmetic
+              (arithmetic_exp
+                (num)))))))))

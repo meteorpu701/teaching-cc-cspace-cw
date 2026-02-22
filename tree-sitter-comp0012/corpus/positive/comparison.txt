@@ -1,0 +1,67 @@
+====================
+Comparisons (compare)
+====================
+
+x == 1;
+x != 1;
+x < 1;
+x > 1;
+x <= 1;
+x >= 1;
+(x < 1);
+
+---
+
+(source_file
+  (compare_exp
+    (binary_compare
+      (arithmetic_exp
+            (identifier))
+      (compare)
+      (arithmetic_exp
+        (num))))
+  (compare_exp
+    (binary_compare
+      (arithmetic_exp
+            (identifier))
+      (compare)
+      (arithmetic_exp
+        (num))))
+  (compare_exp
+    (binary_compare
+      (arithmetic_exp
+            (identifier))
+      (compare)
+      (arithmetic_exp
+        (num))))
+  (compare_exp
+    (binary_compare
+      (arithmetic_exp
+            (identifier))
+      (compare)
+      (arithmetic_exp
+        (num))))
+  (compare_exp
+    (binary_compare
+      (arithmetic_exp
+            (identifier))
+      (compare)
+      (arithmetic_exp
+        (num))))
+  (compare_exp
+    (binary_compare
+      (arithmetic_exp
+            (identifier))
+      (compare)
+      (arithmetic_exp
+        (num))))
+  (bool_exp
+        (parenthesis_bool
+          (bool_exp
+            (compare_exp
+              (binary_compare
+                (arithmetic_exp
+                  (identifier))
+                (compare)
+                (arithmetic_exp
+                  (num))))))))

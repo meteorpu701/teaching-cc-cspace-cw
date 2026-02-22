@@ -1,0 +1,290 @@
+=========================
+If (block)
+=========================
+
+if (true) { x = 1; }
+if (1 < 2) { x = 1; } elif (false) { x = 2; } else { x = 3; }
+if ((1 < 2) && (!false)) { x = 9; } elif (true || false) { x = 8; }
+
+---
+
+(source_file
+  (if_block
+    (bool_exp
+      (bool))
+    (block
+      (assignment
+        (identifier)
+        (arithmetic_exp
+          (num)))))
+  (if_block
+    (bool_exp
+      (compare_exp
+        (binary_compare
+          (arithmetic_exp
+            (num))
+          (compare)
+          (arithmetic_exp
+            (num)))))
+    (block
+      (assignment
+        (identifier)
+        (arithmetic_exp
+          (num))))
+    (bool_exp
+      (bool))
+    (block
+      (assignment
+        (identifier)
+        (arithmetic_exp
+          (num))))
+    (block
+      (assignment
+        (identifier)
+        (arithmetic_exp
+          (num)))))
+  (if_block
+    (bool_exp
+      (binary_bool
+        (bool_exp
+          (parenthesis_bool
+            (bool_exp
+              (compare_exp
+                (binary_compare
+                  (arithmetic_exp
+                    (num))
+                  (compare)
+                  (arithmetic_exp
+                    (num)))))))
+        (bool_exp
+          (parenthesis_bool
+            (bool_exp
+              (unary_bool
+                (bool_exp
+                  (bool))))))))
+    (block
+      (assignment
+        (identifier)
+        (arithmetic_exp
+          (num))))
+    (bool_exp
+      (binary_bool
+        (bool_exp
+          (bool))
+        (bool_exp
+          (bool))))
+    (block
+      (assignment
+        (identifier)
+        (arithmetic_exp
+          (num))))))
+
+==============
+While (block)
+==============
+
+while (true) { x = 1; }
+while (1 < 10) { x = 1; }
+while ((1 < 2) && (!false)) { x = 1; }
+
+---
+
+(source_file
+  (while_block
+    (bool_exp
+      (bool))
+    (block
+      (assignment
+        (identifier)
+        (arithmetic_exp
+          (num)))))
+  (while_block
+    (bool_exp
+      (compare_exp
+        (binary_compare
+          (arithmetic_exp
+            (num))
+          (compare)
+          (arithmetic_exp
+            (num)))))
+    (block
+      (assignment
+        (identifier)
+        (arithmetic_exp
+          (num)))))
+  (while_block
+    (bool_exp
+      (binary_bool
+        (bool_exp
+          (parenthesis_bool
+            (bool_exp
+              (compare_exp
+                (binary_compare
+                  (arithmetic_exp
+                    (num))
+                  (compare)
+                  (arithmetic_exp
+                    (num)))))))
+        (bool_exp
+          (parenthesis_bool
+            (bool_exp
+              (unary_bool
+                (bool_exp
+                  (bool))))))))
+    (block
+      (assignment
+        (identifier)
+        (arithmetic_exp
+          (num))))))
+
+============
+For (block)
+============
+
+for (int i = 0; i < 10; i = 1) { x = 1; }
+for (boolean ok = true; ok && true; ok = false) { x = 1; }
+for (x = 1; (1 < 2) || false; x = 1) { x = 1; }
+
+---
+
+(source_file
+  (for_block
+    (declare
+      (typed_declare
+          (type)
+        (identifier)
+        (arithmetic_exp
+          (num))))
+    (bool_exp
+      (compare_exp
+        (binary_compare
+          (arithmetic_exp
+            (identifier))
+          (compare)
+          (arithmetic_exp
+            (num)))))
+    (assignment
+      (identifier)
+      (arithmetic_exp
+        (num)))
+    (block
+      (assignment
+        (identifier)
+        (arithmetic_exp
+          (num)))))
+  (for_block
+    (declare
+      (typed_declare
+          (type)
+        (identifier)
+        (bool_exp
+          (bool))))
+    (bool_exp
+      (binary_bool
+        (bool_exp
+          (identifier))
+        (bool_exp
+          (bool))))
+    (assignment
+      (identifier)
+      (bool_exp
+        (bool)))
+    (block
+      (assignment
+        (identifier)
+        (arithmetic_exp
+          (num)))))
+  (for_block
+    (assignment
+      (identifier)
+      (arithmetic_exp
+        (num)))
+    (bool_exp
+      (binary_bool
+        (bool_exp
+          (parenthesis_bool
+            (bool_exp
+              (compare_exp
+                (binary_compare
+                  (arithmetic_exp
+                    (num))
+                  (compare)
+                  (arithmetic_exp
+                    (num)))))))
+        (bool_exp
+          (bool))))
+    (assignment
+      (identifier)
+      (arithmetic_exp
+        (num)))
+    (block
+      (assignment
+        (identifier)
+        (arithmetic_exp
+          (num))))))
+
+==============
+Switch (block)
+==============
+
+switch (x) {
+  case 1 -> { x = 1; }
+  case "a" -> { x = 2; }
+  default -> { x = 3; }
+}
+
+switch (flag) {
+  case true -> { x = 10; }
+  case false -> { x = 20; }
+}
+
+switch (x) {
+  default -> { x = 0; }
+}
+
+---
+
+(source_file
+  (switch_block
+    (identifier)
+    (arithmetic_exp
+      (num))
+    (block
+      (assignment
+        (identifier)
+        (arithmetic_exp
+          (num))))
+    (string)
+    (block
+      (assignment
+        (identifier)
+        (arithmetic_exp
+          (num))))
+    (block
+      (assignment
+        (identifier)
+        (arithmetic_exp
+          (num)))))
+  (switch_block
+    (identifier)
+    (bool_exp
+      (bool))
+    (block
+      (assignment
+        (identifier)
+        (arithmetic_exp
+          (num))))
+    (bool_exp
+      (bool))
+    (block
+      (assignment
+        (identifier)
+        (arithmetic_exp
+          (num)))))
+    (switch_block
+    (identifier)
+    (block
+      (assignment
+        (identifier)
+        (arithmetic_exp
+          (num))))))

@@ -1,0 +1,122 @@
+================================================================================
+If condition missing left parenthesis
+================================================================================
+
+if true) { x = 1; }
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (ERROR
+    (identifier))
+  (block
+    (assignment
+      (identifier)
+      (arithmetic_exp
+        (num)))))
+
+================================================================================
+If condition missing right parenthesis
+================================================================================
+
+if (true { x = 1; }
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (ERROR
+    (bool))
+  (block
+    (assignment
+      (identifier)
+      (arithmetic_exp
+        (num)))))
+
+================================================================================
+While condition missing expression
+================================================================================
+
+while () { x = 1; }
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (while_block
+    (bool_exp
+      (MISSING identifier))
+    (block
+      (assignment
+        (identifier)
+        (arithmetic_exp
+          (num))))))
+
+================================================================================
+For header missing separator semicolon
+================================================================================
+
+for (int i = 0; i < 10 i = 1) { x = 1; }
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (ERROR
+    (declare
+      (typed_declare
+        (type)
+        (identifier)
+        (arithmetic_exp
+          (num))))
+    (bool_exp
+      (compare_exp
+        (binary_compare
+          (arithmetic_exp
+            (identifier))
+          (compare)
+          (ERROR
+            (arithmetic_exp
+              (num))
+            (identifier)
+            (num)
+            (identifier))
+          (arithmetic_exp
+            (num)))))))
+
+================================================================================
+Switch case missing label
+================================================================================
+
+switch (x) { case -> { x = 1; } }
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (switch_block
+    (identifier)
+    (ERROR
+      (arithmetic_exp
+        (unary_arithmetic
+          (ERROR)
+          (arithmetic_exp
+            (identifier))))
+      (num))))
+
+================================================================================
+Switch header missing parentheses
+================================================================================
+
+switch x) { case 1 -> { x = 1; } }
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (ERROR
+    (identifier))
+  (block
+    (ERROR
+      (identifier)
+      (num))
+    (block
+      (assignment
+        (identifier)
+        (arithmetic_exp
+          (num))))))

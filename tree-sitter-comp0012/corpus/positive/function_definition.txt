@@ -1,0 +1,172 @@
+========================
+Function definitions
+========================
+
+int add(int x, int y) {
+  x = 1;
+  return(1);
+}
+
+boolean isOk(boolean b) {
+  return(true);
+}
+
+void log(string s) {
+  x = 1;
+}
+
+var init() {
+  x = 1;
+}
+
+int curried(int x)(int y) {
+  return(1);
+}
+
+---
+
+(source_file
+  (function_declare
+    (function_declare_typed
+      (type)
+      (identifier)
+      (parameter_list
+        (parameter
+          (type)
+          (identifier))
+        (parameter
+          (type)
+          (identifier)))
+      (block
+        (assignment
+          (identifier)
+          (arithmetic_exp
+            (num)))
+        (return_statement
+          (arithmetic_exp
+            (parenthesis_arithmetic
+              (arithmetic_exp
+                (num))))))))
+  (function_declare
+    (function_declare_typed
+      (type)
+      (identifier)
+      (parameter_list
+        (parameter
+          (type)
+          (identifier)))
+      (block
+        (return_statement
+          (bool_exp
+            (parenthesis_bool
+              (bool_exp
+                (bool))))))))
+  (function_declare
+    (function_declare_void
+      (type_void)
+      (identifier)
+      (parameter_list
+        (parameter
+          (type)
+          (identifier)))
+      (block
+        (assignment
+          (identifier)
+          (arithmetic_exp
+            (num))))))
+  (function_declare
+    (function_declare_void
+      (type_void)
+      (identifier)
+      (parameter_list)
+      (block
+        (assignment
+          (identifier)
+          (arithmetic_exp
+            (num))))))
+  (function_declare
+    (function_declare_typed
+      (type)
+      (identifier)
+      (parameter_list
+        (parameter
+          (type)
+          (identifier)))
+      (parameter_list
+        (parameter
+          (type)
+          (identifier)))
+      (block
+        (return_statement
+          (arithmetic_exp
+            (parenthesis_arithmetic
+              (arithmetic_exp
+                (num)))))))))
+
+=================
+Return statements
+=================
+
+int r1() { return; }
+
+int r2() { return x; }
+
+int r3() { return(1); }
+
+int r4() { return obj.f(); }
+
+int r5() { return a[1:3]; }
+
+---
+
+(source_file
+  (function_declare
+    (function_declare_typed
+      (type)
+      (identifier)
+      (parameter_list)
+      (block
+        (return_statement))))
+  (function_declare
+    (function_declare_typed
+      (type)
+      (identifier)
+      (parameter_list)
+      (block
+        (return_statement
+          (identifier)))))
+  (function_declare
+    (function_declare_typed
+      (type)
+      (identifier)
+      (parameter_list)
+      (block
+        (return_statement
+          (arithmetic_exp
+            (parenthesis_arithmetic
+              (arithmetic_exp
+                (num))))))))
+  (function_declare
+    (function_declare_typed
+      (type)
+      (identifier)
+      (parameter_list)
+      (block
+        (return_statement
+          (method_call
+            (identifier)
+            (identifier)
+            (argument_list))))))
+  (function_declare
+    (function_declare_typed
+      (type)
+      (identifier)
+      (parameter_list)
+      (block
+        (return_statement
+          (array_operation
+            (identifier)
+            (arithmetic_exp
+              (num))
+            (arithmetic_exp
+              (num))))))))

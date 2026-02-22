@@ -8,7 +8,46 @@
       "required": false,
       "types": [
         {
-          "type": "bool",
+          "type": "arithmetic_exp",
+          "named": true
+        },
+        {
+          "type": "array_operation",
+          "named": true
+        },
+        {
+          "type": "bool_exp",
+          "named": true
+        },
+        {
+          "type": "compare_exp",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "method_call",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "arithmetic_exp",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "binary_arithmetic",
           "named": true
         },
         {
@@ -20,10 +59,83 @@
           "named": true
         },
         {
-          "type": "string",
+          "type": "parenthesis_arithmetic",
+          "named": true
+        },
+        {
+          "type": "unary_arithmetic",
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "array_declare",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "bool_array_declare",
+          "named": true
+        },
+        {
+          "type": "int_array_declare",
+          "named": true
+        },
+        {
+          "type": "string_array_declare",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "array_operation",
+    "named": true,
+    "fields": {
+      "array": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "end": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "arithmetic_exp",
+            "named": true
+          }
+        ]
+      },
+      "start": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "arithmetic_exp",
+            "named": true
+          }
+        ]
+      },
+      "step": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "arithmetic_exp",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -45,11 +157,11 @@
         "required": true,
         "types": [
           {
-            "type": "bool",
+            "type": "arithmetic_exp",
             "named": true
           },
           {
-            "type": "num",
+            "type": "bool_exp",
             "named": true
           },
           {
@@ -61,23 +173,57 @@
     }
   },
   {
-    "type": "block",
+    "type": "binary_arithmetic",
     "named": true,
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
-          "type": "assignment",
+          "type": "arithmetic_exp",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "binary_bool",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "bool_exp",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "binary_compare",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "arithmetic_exp",
           "named": true
         },
         {
-          "type": "block",
+          "type": "array_operation",
           "named": true
         },
         {
           "type": "bool",
+          "named": true
+        },
+        {
+          "type": "compare",
           "named": true
         },
         {
@@ -89,11 +235,86 @@
           "named": true
         },
         {
-          "type": "num",
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "arithmetic_exp",
+          "named": true
+        },
+        {
+          "type": "array_operation",
+          "named": true
+        },
+        {
+          "type": "assignment",
+          "named": true
+        },
+        {
+          "type": "block",
+          "named": true
+        },
+        {
+          "type": "bool_exp",
+          "named": true
+        },
+        {
+          "type": "class_declare",
+          "named": true
+        },
+        {
+          "type": "compare_exp",
+          "named": true
+        },
+        {
+          "type": "declare",
+          "named": true
+        },
+        {
+          "type": "for_block",
+          "named": true
+        },
+        {
+          "type": "function_declare",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "if_block",
+          "named": true
+        },
+        {
+          "type": "method_call",
+          "named": true
+        },
+        {
+          "type": "return_statement",
           "named": true
         },
         {
           "type": "string",
+          "named": true
+        },
+        {
+          "type": "switch_block",
+          "named": true
+        },
+        {
+          "type": "while_block",
           "named": true
         }
       ]
@@ -103,6 +324,415 @@
     "type": "bool",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "bool_array_declare",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": ",",
+            "named": false
+          },
+          {
+            "type": "bool_exp",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "bool_exp",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "binary_bool",
+          "named": true
+        },
+        {
+          "type": "bool",
+          "named": true
+        },
+        {
+          "type": "compare_exp",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "parenthesis_bool",
+          "named": true
+        },
+        {
+          "type": "unary_bool",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "class_declare",
+    "named": true,
+    "fields": {
+      "field": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "declare",
+            "named": true
+          }
+        ]
+      },
+      "method": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "function_declare",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "parameter": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "parameter_list",
+            "named": true
+          }
+        ]
+      },
+      "superclass": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "compare",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "compare_exp",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "binary_compare",
+          "named": true
+        },
+        {
+          "type": "parenthesis_compare",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "declare",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "array_declare",
+          "named": true
+        },
+        {
+          "type": "typed_declare",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "for_block",
+    "named": true,
+    "fields": {
+      "condition": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "bool_exp",
+            "named": true
+          },
+          {
+            "type": "compare_exp",
+            "named": true
+          }
+        ]
+      },
+      "initialization": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "assignment",
+            "named": true
+          },
+          {
+            "type": "declare",
+            "named": true
+          }
+        ]
+      },
+      "update": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "assignment",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "block",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "function_declare",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "function_declare_typed",
+          "named": true
+        },
+        {
+          "type": "function_declare_void",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "function_declare_typed",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "block",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "params": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "parameter_list",
+            "named": true
+          }
+        ]
+      },
+      "return_type": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "type",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "function_declare_void",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "block",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "params": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "parameter_list",
+            "named": true
+          }
+        ]
+      },
+      "return_type": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "type_void",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "if_block",
+    "named": true,
+    "fields": {
+      "condition": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "bool_exp",
+            "named": true
+          },
+          {
+            "type": "compare_exp",
+            "named": true
+          }
+        ]
+      },
+      "elif_block": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "block",
+            "named": true
+          }
+        ]
+      },
+      "else_block": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "block",
+            "named": true
+          }
+        ]
+      },
+      "if_block": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "block",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "int_array_declare",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": ",",
+            "named": false
+          },
+          {
+            "type": "arithmetic_exp",
+            "named": true
+          }
+        ]
+      }
+    }
   },
   {
     "type": "method_call",
@@ -130,11 +760,129 @@
       }
     },
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
           "type": "argument_list",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "parameter",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "parameter_list",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "parameter",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "parenthesis_arithmetic",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "arithmetic_exp",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "parenthesis_bool",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "bool_exp",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "parenthesis_compare",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "compare_exp",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "return_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "arithmetic_exp",
+          "named": true
+        },
+        {
+          "type": "array_operation",
+          "named": true
+        },
+        {
+          "type": "bool_exp",
+          "named": true
+        },
+        {
+          "type": "compare_exp",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "method_call",
+          "named": true
+        },
+        {
+          "type": "string",
           "named": true
         }
       ]
@@ -149,6 +897,14 @@
       "required": false,
       "types": [
         {
+          "type": "arithmetic_exp",
+          "named": true
+        },
+        {
+          "type": "array_operation",
+          "named": true
+        },
+        {
           "type": "assignment",
           "named": true
         },
@@ -157,7 +913,27 @@
           "named": true
         },
         {
-          "type": "bool",
+          "type": "bool_exp",
+          "named": true
+        },
+        {
+          "type": "class_declare",
+          "named": true
+        },
+        {
+          "type": "compare_exp",
+          "named": true
+        },
+        {
+          "type": "declare",
+          "named": true
+        },
+        {
+          "type": "for_block",
+          "named": true
+        },
+        {
+          "type": "function_declare",
           "named": true
         },
         {
@@ -165,15 +941,27 @@
           "named": true
         },
         {
+          "type": "if_block",
+          "named": true
+        },
+        {
           "type": "method_call",
           "named": true
         },
         {
-          "type": "num",
+          "type": "return_statement",
           "named": true
         },
         {
           "type": "string",
+          "named": true
+        },
+        {
+          "type": "switch_block",
+          "named": true
+        },
+        {
+          "type": "while_block",
           "named": true
         }
       ]
@@ -185,7 +973,227 @@
     "fields": {}
   },
   {
+    "type": "string_array_declare",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": ",",
+            "named": false
+          },
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "switch_block",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "block",
+            "named": true
+          }
+        ]
+      },
+      "label": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "arithmetic_exp",
+            "named": true
+          },
+          {
+            "type": "array_operation",
+            "named": true
+          },
+          {
+            "type": "bool_exp",
+            "named": true
+          },
+          {
+            "type": "compare_exp",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "method_call",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "type",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "type_void",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "typed_declare",
+    "named": true,
+    "fields": {
+      "decl_type": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "type",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "arithmetic_exp",
+            "named": true
+          },
+          {
+            "type": "bool_exp",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "unary_arithmetic",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "arithmetic_exp",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "unary_bool",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "bool_exp",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "while_block",
+    "named": true,
+    "fields": {
+      "condition": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "bool_exp",
+            "named": true
+          },
+          {
+            "type": "compare_exp",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "block",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "!",
+    "named": false
+  },
+  {
+    "type": "!=",
+    "named": false
+  },
+  {
     "type": "\"",
+    "named": false
+  },
+  {
+    "type": "%",
+    "named": false
+  },
+  {
+    "type": "&&",
     "named": false
   },
   {
@@ -197,7 +1205,51 @@
     "named": false
   },
   {
+    "type": "*",
+    "named": false
+  },
+  {
+    "type": "**",
+    "named": false
+  },
+  {
+    "type": "+",
+    "named": false
+  },
+  {
+    "type": ",",
+    "named": false
+  },
+  {
+    "type": "-",
+    "named": false
+  },
+  {
+    "type": "->",
+    "named": false
+  },
+  {
     "type": ".",
+    "named": false
+  },
+  {
+    "type": "/",
+    "named": false
+  },
+  {
+    "type": ":",
+    "named": false
+  },
+  {
+    "type": ";",
+    "named": false
+  },
+  {
+    "type": "<",
+    "named": false
+  },
+  {
+    "type": "<=",
     "named": false
   },
   {
@@ -205,11 +1257,67 @@
     "named": false
   },
   {
+    "type": "==",
+    "named": false
+  },
+  {
+    "type": ">",
+    "named": false
+  },
+  {
+    "type": ">=",
+    "named": false
+  },
+  {
+    "type": "[",
+    "named": false
+  },
+  {
+    "type": "[]",
+    "named": false
+  },
+  {
+    "type": "]",
+    "named": false
+  },
+  {
+    "type": "boolean",
+    "named": false
+  },
+  {
+    "type": "case",
+    "named": false
+  },
+  {
+    "type": "class",
+    "named": false
+  },
+  {
     "type": "comment",
     "named": true
   },
   {
+    "type": "default",
+    "named": false
+  },
+  {
+    "type": "elif",
+    "named": false
+  },
+  {
+    "type": "else",
+    "named": false
+  },
+  {
+    "type": "extends",
+    "named": false
+  },
+  {
     "type": "false",
+    "named": false
+  },
+  {
+    "type": "for",
     "named": false
   },
   {
@@ -217,8 +1325,28 @@
     "named": true
   },
   {
+    "type": "if",
+    "named": false
+  },
+  {
+    "type": "int",
+    "named": false
+  },
+  {
     "type": "num",
     "named": true
+  },
+  {
+    "type": "return",
+    "named": false
+  },
+  {
+    "type": "string",
+    "named": false
+  },
+  {
+    "type": "switch",
+    "named": false
   },
   {
     "type": "true",
@@ -229,7 +1357,19 @@
     "named": false
   },
   {
+    "type": "void",
+    "named": false
+  },
+  {
+    "type": "while",
+    "named": false
+  },
+  {
     "type": "{",
+    "named": false
+  },
+  {
+    "type": "||",
     "named": false
   },
   {

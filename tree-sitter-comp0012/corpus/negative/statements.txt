@@ -7,8 +7,7 @@ Open String
 ---
 
 (source_file 
-  (string
-    (MISSING """)))
+  (ERROR))
 
 ============
 Close String
@@ -19,9 +18,8 @@ hello"
 ---
 
 (source_file
-  (identifier)
-  (string
-    (MISSING """)))
+  (ERROR
+        (identifier)))
 
 ===========
 Assignments
@@ -33,9 +31,9 @@ var str = "yellow
 ---
 
 (source_file
-  (ERROR)
-  (string)
-  (assignment
+  (ERROR
+    (type_void)
+      (string)
     (identifier)
-    (string
-    (MISSING """))))
+    (identifier)))
+

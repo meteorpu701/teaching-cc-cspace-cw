@@ -1,0 +1,10 @@
+==========================
+Method call without parentheses
+==========================
+System.print "Hello!"
+---
+(source_file
+  (ERROR
+    (identifier)
+        (identifier)
+        (string)))

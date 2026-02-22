@@ -2,26 +2,30 @@
 Numbers (nums)
 ==============
 
-0
-123
-12345678901
-034
+0;
+123;
+12345678901;
+034;
 
 ---
 
-(source_file 
-      (num)
-      (num)
-      (num)
-      (num))
+(source_file
+      (arithmetic_exp
+        (num))
+      (arithmetic_exp
+        (num))
+      (arithmetic_exp
+        (num))
+      (arithmetic_exp
+        (num)))
 
 =======
 Strings
 =======
 
-"hello"
-"goodbye"
-"simple"
+"hello";
+"goodbye";
+"simple";
 
 ---
 
@@ -34,40 +38,56 @@ Strings
 Booleans (bool)
 ===============
 
-true
-false
+true;
+false;
 
 ---
 
 (source_file
-      (bool)
-      (bool))
+      (bool_exp
+        (bool))
+      (bool_exp
+        (bool)))
 
 ===========
 Assignments
 ===========
 
-var color = "yellow"
-var is_valid = true
-var dozen = 12
-var zero = 0
-var negate = false
+string color = "yellow";
+boolean is_valid = true;
+int dozen = 12;
+int zero = 0;
+boolean negate = false;
 
 ---
 
 (source_file
-  (assignment
-    (identifier)
-      (string))
-  (assignment
-    (identifier)
-      (bool))
-  (assignment
-    (identifier)
-      (num))
-  (assignment
-    (identifier)
-      (num))
-  (assignment
-    (identifier)
-      (bool)))
+      (declare
+        (typed_declare
+          (type)
+          (identifier)
+          (string)))
+      (declare
+        (typed_declare
+          (type)
+          (identifier)
+          (bool_exp
+            (bool))))
+      (declare
+        (typed_declare
+          (type)
+          (identifier)
+          (arithmetic_exp
+            (num))))
+      (declare
+        (typed_declare
+          (type)
+          (identifier)
+          (arithmetic_exp
+            (num))))
+      (declare
+        (typed_declare
+          (type)
+          (identifier)
+          (bool_exp
+            (bool)))))

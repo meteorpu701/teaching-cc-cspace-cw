@@ -2,8 +2,8 @@
 Empty method call
 =================
 
-System.print()
-list.insert()
+System.print();
+list.insert();
 
 ---
 
@@ -15,9 +15,70 @@ list.insert()
 Single Parameter Method Call
 ============================
 
-System.print("Hello!")
+System.print("Hello!");
 
 ---
 
 (source_file 
  (method_call (identifier) (identifier) (argument_list (string))))
+
+=================
+Argument lists
+=================
+
+obj.f();
+obj.f(1);
+obj.f(1,2,3);
+obj.f(true,"s",x);
+
+---
+
+(source_file
+  (method_call
+    (identifier)
+    (identifier)
+    (argument_list))
+  (method_call
+    (identifier)
+    (identifier)
+    (argument_list
+      (arithmetic_exp (num))))
+  (method_call
+    (identifier)
+    (identifier)
+    (argument_list
+      (arithmetic_exp (num))
+      (arithmetic_exp (num))
+      (arithmetic_exp (num))))
+  (method_call
+    (identifier)
+    (identifier)
+    (argument_list
+      (bool_exp (bool))
+      (string)
+      (identifier))))
+
+=========================
+Curried-style method calls
+=========================
+
+obj.f(1)(2);
+System.print("a")("b");
+
+---
+
+(source_file
+  (method_call
+    (identifier)
+    (identifier)
+    (argument_list
+      (arithmetic_exp (num)))
+    (argument_list
+      (arithmetic_exp (num))))
+  (method_call
+    (identifier)
+    (identifier)
+    (argument_list
+      (string))
+    (argument_list
+      (string))))

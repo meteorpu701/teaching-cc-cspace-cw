@@ -1,0 +1,47 @@
+================
+Arithmetic (ops)
+================
+
+1+2;
+(1+2)*3;
+-x;
+x**2;
+x%2;
+
+---
+
+(source_file
+  (arithmetic_exp
+    (binary_arithmetic
+      (arithmetic_exp
+        (num))
+      (arithmetic_exp
+        (num))))
+  (arithmetic_exp
+    (binary_arithmetic
+      (arithmetic_exp
+        (parenthesis_arithmetic
+          (arithmetic_exp
+            (binary_arithmetic
+              (arithmetic_exp
+                (num))
+              (arithmetic_exp
+                (num))))))
+      (arithmetic_exp
+        (num))))
+  (arithmetic_exp
+    (unary_arithmetic
+      (arithmetic_exp
+        (identifier))))
+  (arithmetic_exp
+    (binary_arithmetic
+      (arithmetic_exp
+        (identifier))
+      (arithmetic_exp
+        (num))))
+  (arithmetic_exp
+    (binary_arithmetic
+      (arithmetic_exp
+        (identifier))
+      (arithmetic_exp
+        (num)))))

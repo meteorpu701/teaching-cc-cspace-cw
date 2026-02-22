@@ -2,22 +2,60 @@
 Numbers (nums)
 ==============
 
-{0}
-{ 0 }
+{0;}
+{ 0; }
 { 
-    0 }
+    0; }
 
-{ 0 
+{ 0 ;
 }
 { 
-    0 
+    0 ;
 }
 ---
 
 (source_file 
-  (block (num))
-  (block (num))
-  (block (num))
-  (block (num))
-  (block (num))
+  (block (arithmetic_exp
+          (num)))
+  (block (arithmetic_exp
+          (num)))
+  (block (arithmetic_exp
+          (num)))
+  (block (arithmetic_exp
+          (num)))
+  (block (arithmetic_exp
+          (num)))
   )
+
+
+=====================
+Block shape variants
+=====================
+
+{ }
+
+{ { x = 1; } }
+
+{ int x = 1; x = 2; }
+
+---
+
+(source_file
+  (block)
+  (block
+    (block
+      (assignment
+        (identifier)
+        (arithmetic_exp
+          (num)))))
+  (block
+    (declare
+      (typed_declare
+        (type)
+        (identifier)
+        (arithmetic_exp
+          (num))))
+    (assignment
+      (identifier)
+      (arithmetic_exp
+        (num)))))

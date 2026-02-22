@@ -1,0 +1,63 @@
+==========================
+Declarations (typed values)
+==========================
+
+int a = 1;
+string s = "hi";
+boolean ok = false;
+
+---
+
+(source_file
+  (declare
+    (typed_declare
+          (type)
+      (identifier)
+      (arithmetic_exp (num))))
+  (declare
+    (typed_declare
+          (type)
+      (identifier)
+      (string)))
+  (declare
+    (typed_declare
+          (type)
+      (identifier)
+      (bool_exp (bool)))))
+
+=====================
+Declarations (arrays)
+=====================
+
+int[] xs;
+int[] ys = [1,2,3];
+string[] ss = ["a","b"];
+boolean[] bs = [true,false,true];
+
+---
+
+(source_file
+  (declare
+    (array_declare
+      (int_array_declare
+        (identifier))))
+  (declare
+    (array_declare
+      (int_array_declare
+        (identifier)
+        (arithmetic_exp (num))
+        (arithmetic_exp (num))
+        (arithmetic_exp (num)))))
+  (declare
+    (array_declare
+      (string_array_declare
+        (identifier)
+        (string)
+        (string))))
+  (declare
+    (array_declare
+      (bool_array_declare
+        (identifier)
+        (bool_exp (bool))
+        (bool_exp (bool))
+        (bool_exp (bool))))))
